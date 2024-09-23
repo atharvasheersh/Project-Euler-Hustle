@@ -1,0 +1,18 @@
+prime_nos = [2, 3]
+n = 4
+
+
+def is_prime(num):
+    for prime in prime_nos:
+        if prime * prime > num:
+            break
+        if num % prime == 0:
+            return False
+    return True
+
+
+while len(prime_nos) <= 100000:
+    if is_prime(n):
+        prime_nos.append(n)
+    n += 1
+print(prime_nos[10000])
