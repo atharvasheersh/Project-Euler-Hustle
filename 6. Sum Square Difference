@@ -1,0 +1,21 @@
+t = int(input())
+numbers = list(range(1, t+1))
+index = 0
+plus = 0
+for i in numbers:
+    plus += numbers[index]
+    index += 1
+
+first_num = plus ** 2
+second_num = 0
+mult = 0
+arc = []
+sed = 0
+for _ in numbers:
+    mult = (numbers[sed])**2
+    sed += 1
+    arc.append(mult)
+
+second_num = sum(arc)
+req_num = - second_num + first_num
+print(req_num)
