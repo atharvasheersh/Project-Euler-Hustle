@@ -1,0 +1,12 @@
+output = []
+for a in range(1, 1000):
+    for b in range(a, 1000):
+        c = (a*2 + b2)*0.5
+        if c == int(c):
+            output.append((a, b, int(c)))
+
+for _ in range(len(output)):
+    if sum(output[_]) == 1000:
+        print(output[_])
+        prod = output[][0]*output[][1]*output[_][2]
+        print(prod)
