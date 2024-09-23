@@ -1,0 +1,10 @@
+prime_nos = [2, 3]
+for num in range(4, 2000001):
+    is_prime = True
+    for prime in prime_nos:
+        if num % prime == 0:
+            is_prime = False
+            break
+    if is_prime:
+        prime_nos.append(num)
+print(sum(prime_nos))
