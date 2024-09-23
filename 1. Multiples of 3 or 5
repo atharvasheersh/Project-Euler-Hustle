@@ -1,0 +1,6 @@
+n = list(range(1, 1000))
+divisible_3_or_5 = []
+for part in n:
+    if part % 3 == 0 or part % 5 == 0:
+        divisible_3_or_5.append(part)
+print(sum(divisible_3_or_5))
