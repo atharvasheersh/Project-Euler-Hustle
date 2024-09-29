@@ -1,0 +1,21 @@
+def collatz(n):
+    count = 1
+    while n != 1: 
+        if n%2 != 0:
+            n = 3*n +1
+            count += 1
+        if n%2 ==0:
+            n = n//2
+            count += 1
+    return count
+
+
+col_list = []
+name_list = []
+for i in range(100000, 1000001): #This speeds up the process
+    col = collatz(i)
+    col_list.append(col)
+    name_list.append(i)
+
+print(max(col_list))
+print(name_list[col_list.index(max(col_list))])
