@@ -1,0 +1,7 @@
+n = 2**1000
+nums = list(str(n))
+plus = 0
+for i in nums :
+    j = int(i)
+    plus += j
+print(plus)
