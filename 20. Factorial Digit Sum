@@ -1,0 +1,10 @@
+n = 1
+for i in range(1, 101):
+    n *= i
+k = str(n)
+l1 = list(k)
+plus = 0
+for part in l1:
+    jm = int(part)
+    plus += jm
+print(plus)
