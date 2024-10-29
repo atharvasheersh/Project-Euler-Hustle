@@ -1,0 +1,65 @@
+number_dict = {
+    "1": "one",
+    "2": "two",
+    "3": "three",
+    "4": "four",
+    "5": "five",
+    "6": "six",
+    "7": "seven",
+    "8": "eight",
+    "9": "nine",
+    "10": "ten",
+    "11": "eleven",
+    "12": "twelve",
+    "13": "thirteen",
+    "14": "fourteen",
+    "15": "fifteen",
+    "16": "sixteen",
+    "17": "seventeen",
+    "18": "eighteen",
+    "19": "nineteen",
+}
+dict_2 = {
+    "20": "twenty",
+    "30": "thirty",
+    "40": "forty",
+    "50": "fifty",
+    "60": "sixty",
+    "70": "seventy",
+    "80": "eighty",
+    "90": "ninety"
+}
+
+total_length = 0 
+for n in range(1, 1001):
+    if 1 <= n < 20:
+        k = str(n)
+        total_length += len(number_dict[k])
+
+    elif 20 <= n < 100:
+        tens = (n // 10) * 10  
+        ones = n % 10         
+        total_length += len(dict_2[str(tens)])
+        if ones > 0:
+            total_length += len(number_dict[str(ones)])
+
+    elif 100 <= n < 1000:
+        hundreds = n // 100
+        total_length += len(number_dict[str(hundreds)]) 
+        total_length += len("hundred")  
+        if n % 100 > 0: 
+            total_length += len("and") 
+            remainder = n % 100
+            if remainder < 20:
+                total_length += len(number_dict[str(remainder)]) 
+            else:
+                tens = (remainder // 10) * 10
+                ones = remainder % 10
+                total_length += len(dict_2[str(tens)])
+                if ones > 0:
+                    total_length += len(number_dict[str(ones)])  
+
+    elif n == 1000:
+        total_length += len("one") + len("thousand") 
+
+print(total_length)
