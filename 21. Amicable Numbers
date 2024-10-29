@@ -1,0 +1,18 @@
+def divisors(n):
+    n = int(n)
+    l1 = []
+    for i in range(1, n):
+        if n % i == 0:
+            l1.append(i)
+    return sum(l1)
+
+
+plus = 0
+for num in range(1, 10000):
+    sum_div1 = divisors(num)
+    if sum_div1 != num:
+        sum_div2 = divisors(sum_div1)
+        if sum_div2 == num:
+            plus += num
+
+print(plus)
