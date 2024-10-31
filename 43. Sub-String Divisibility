@@ -1,0 +1,22 @@
+from itertools import permutations
+
+def digits(n):
+    return [int(i) for i in str(n)]
+
+pandigital_numbers = [int("".join(p)) for p in permutations("0123456789") if p[0] != '0']
+l_divisors = [2, 3, 5, 7, 11, 13, 17]
+l_satisfying = []
+for part in pandigital_numbers:
+    digs = digits(part)
+    satisfies = True
+    for i in range(1, 8):
+        three_digit_number = digs[i] * 100 + digs[i+1] * 10 + digs[i+2]
+        if three_digit_number % l_divisors[i-1] != 0:
+            satisfies = False
+            break
+    if satisfies:
+        l_satisfying.append(part)
+
+print(l_satisfying)
+print(sum(l_satisfying))
+print(len(l_satisfying))
