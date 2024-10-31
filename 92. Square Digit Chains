@@ -1,0 +1,16 @@
+def digits(n):
+    return [int(i) for i in str(n)]
+
+def value(n):
+    k = n
+    while k != 1 and k != 89:
+        k = sum(digit ** 2 for digit in digits(k))
+    return k
+
+l1 = list(range(1, 10000000))
+cnt = 0
+for part in l1:
+    if value(part) == 89:
+        cnt += 1
+
+print(cnt)
