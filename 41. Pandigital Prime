@@ -1,0 +1,31 @@
+import math
+
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def pandigital(n):
+    ln = list(str(n))
+    sorted_ln = sorted(ln)
+    "".join(sorted_ln)
+    l2 = list((range(1, len(ln)+1)))
+    l3 = []
+    for part in l2:
+        l3.append(str(part))
+    "".join(l3)
+    if l3 == sorted_ln:
+        return True
+    else:
+        return False
+        
+pandigital_primes = []
+
+for number in range(1234567, 7654322 + 1, 2):
+    if pandigital(number) and is_prime(number):
+        pandigital_primes.append(number)
+
+print(pandigital_primes)
