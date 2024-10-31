@@ -1,0 +1,45 @@
+import math
+
+def isPrime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def digits(n):
+    l_n = list(str(n))
+    digits = []
+    for i in l_n:
+        f = int(i)
+        digits.append(f)
+    return digits
+
+def perm(n):
+    n_str = str(n)
+    length = len(n_str)
+    perms = []
+    for i in range(length):
+        perm = n_str[i:] + n_str[:i]
+        perms.append(int(perm))  
+    return perms
+
+def circular_prime(n):
+    cnt = 0
+    for part in perm(n):
+        if isPrime(part) :
+            cnt += 1
+    if cnt == len(digits(n)):
+        return True
+    else:
+        return False
+
+l4 = []
+for i in range(1, 1000000):
+    if circular_prime(i):
+        l4.append(i)
+
+print(l4)
+print(sum(l4))
+print(len(l4))
