@@ -29,3 +29,4 @@ for number in range(1234567, 7654322 + 1, 2):
         pandigital_primes.append(number)
 
 print(pandigital_primes)
+print(max(pandigital_primes))
