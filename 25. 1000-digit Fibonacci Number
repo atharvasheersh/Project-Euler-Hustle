@@ -1,0 +1,9 @@
+def fib(n): #Returns Fibonacci series upto the first number bigger than n
+    fibs = [1, 1, 2]
+    while fibs[-1] < n:
+        k = fibs[-1]+fibs[-2]
+        fibs.append(k)
+    return fibs
+
+print(fib(10**999))
+print(len(fib(10**999)))
