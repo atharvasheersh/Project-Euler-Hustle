@@ -1,0 +1,26 @@
+def factorial(n):
+    fact = 1
+    for i in range(1, n+1):
+        fact *= i
+    return fact
+
+def digits(n):
+    l_n = list(str(n))
+    digits = []
+    for i in l_n:
+        f = int(i)
+        digits.append(f)
+    return digits
+
+
+l1 = list(range(11, 1000000)) 
+l2 = []
+for part in l1:
+    l3 = []
+    for j in digits(part):
+        l3.append(factorial(j))
+    if sum(l3) == part:
+        l2.append(part)
+
+print(l2)
+print(sum(l2))
