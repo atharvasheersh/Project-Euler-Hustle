@@ -1,0 +1,14 @@
+from itertools import permutations
+from collections import defaultdict
+
+def cube(n):
+    return n ** 3
+
+cubes = [cube(i) for i in range(1000, 10000)]
+cube_strs = ["".join(sorted(str(c))) for c in cubes]
+cube_perms = defaultdict(list)
+
+for i, cube_value in enumerate(cubes):
+    cube_perms[cube_strs[i]].append(cube_value)
+cubes_l_5 = [values[0] for values in cube_perms.values() if len(values) >= 5]
+print(cubes_l_5)
