@@ -1,0 +1,39 @@
+def isPalindrome(n):
+    k = list(str(n))
+    k_join = "".join(k)
+    k_rev = k[::-1]
+    k_rev_join = "".join(k_rev)
+    if k_join == k_rev_join:
+        return True
+    else:
+        return False
+    
+def reverse(n):
+    j = list(str(n))
+    k = j[::-1]
+    l = "".join(k)
+    return int(l)
+
+lychrel_numbers = []
+
+def isLychrel(n):
+    cnt = 0
+    cnt_1 = 0
+    while cnt < 50:
+        cnt += 1
+        n = n + reverse(n)
+        if isPalindrome(n):
+            return False
+            break
+        else:
+            cnt_1 += 1
+    if cnt_1==50:
+        return True
+
+for i in range(10000):
+    if isLychrel(i):
+        lychrel_numbers.append(i)
+
+print(lychrel_numbers)
+print(isLychrel(4994))
+print(len(lychrel_numbers))
