@@ -1,4 +1,21 @@
 from itertools import permutations
+def cube(n):
+    return n**3
+
+cubes = [cube(i) for i in range(1000, 10000)]
+cubes_set = set(cubes) 
+cubes_l_5 = []
+for cube_value in cubes:
+    perms = {int("".join(part)) for part in permutations(str(cube_value))}
+    cnt = sum(1 for p in perms if p in cubes_set)
+    if cnt >= 5:
+        cubes_l_5.append(cube_value)
+print(cubes_l_5)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#A lot faster code (I mean it)
+
+from itertools import permutations
 from collections import defaultdict
 
 def cube(n):
