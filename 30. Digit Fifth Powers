@@ -1,0 +1,17 @@
+def digits(n):
+    l_n = list(str(n))
+    digits = []
+    for i in l_n:
+        f = int(i)
+        digits.append(f)
+    return digits
+
+fifth_power_digits = []
+for i in range(2, 10000000):
+    plus = sum(d ** 5 for d in digits(i))
+    
+    if plus == i:
+        fifth_power_digits.append(i)
+
+print(fifth_power_digits)
+print(sum(fifth_power_digits))
