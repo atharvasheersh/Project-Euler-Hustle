@@ -1,0 +1,22 @@
+def binary(n):
+    l1 = []
+    while n > 0:
+        l1.append(str(n % 2))
+        n = n//2
+    l1.reverse()
+    return "".join(l1)
+
+def isPalindrome(n):
+    j = list(str(n))
+    return j[::-1] == j
+
+def isBinaryPalindrome(n):
+    return isPalindrome(n) and isPalindrome(binary(n))
+
+Binary_Palindromes = []
+for i in range(1, 1000001):
+    if isBinaryPalindrome(i):
+        Binary_Palindromes.append(i)
+
+print(Binary_Palindromes)
+print(sum(Binary_Palindromes))
