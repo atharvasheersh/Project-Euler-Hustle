@@ -1,0 +1,6 @@
+plus, spiral = 1, 1001
+for n in range(3, spiral+1, 2):
+  plus += 4*n*n - 6*n + 6
+print(plus)
+
+#Read about Ulam Spiral
