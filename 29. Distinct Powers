@@ -1,0 +1,10 @@
+n = list(range(2, 101))
+uniques = []
+for i in n:
+    for j in n:
+        mult = i**j
+        if mult not in uniques:
+            uniques.append(mult)
+
+
+print(len(uniques))
