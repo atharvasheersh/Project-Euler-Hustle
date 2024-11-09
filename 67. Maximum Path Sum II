@@ -1,0 +1,8 @@
+with open('C:/Users/Admin/Downloads/0067_triangle.txt', 'r') as file:
+    triangle = [list(map(int, line.split())) for line in file]
+
+for row in range(len(triangle) - 2, -1, -1):
+    for col in range(len(triangle[row])):
+        triangle[row][col] += max(triangle[row + 1][col], triangle[row + 1][col + 1])
+result = triangle[0][0]
+print(result)
