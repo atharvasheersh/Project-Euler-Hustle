@@ -1,0 +1,54 @@
+import itertools
+import time
+import math
+
+start_time = time.time()
+
+def find_arithmetic_progressions(primes, min_length=3):
+    primes = sorted(primes)  
+    ap_sequences = []
+    for i in range(len(primes)):
+        for j in range(i + 1, len(primes)):
+            a = primes[i]
+            d = primes[j] - primes[i] 
+            ap_seq = [a]
+            next_term = a + d
+            while next_term in primes:
+                ap_seq.append(next_term)
+                next_term += d
+            if len(ap_seq) >= min_length:
+                ap_sequences.append(ap_seq)
+    return ap_sequences
+
+def isPrime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(math.sqrt(n) + 1)):
+        if n % i == 0:
+            return False
+    return True
+
+def uniques(result_old):
+    result = []
+    for part in result_old:
+        if part not in result:
+            result.append(part)
+
+    return result
+
+sequences = []
+for i in range(1000, 10000):
+    nums = set(int("".join(part)) for part in itertools.permutations(str(i)) if part[0] != '0')
+    prime_nums = [K for K in nums if isPrime(K)]
+    prime_nums = sorted(prime_nums)
+    sequences.append(find_arithmetic_progressions(prime_nums))
+
+result = []
+for part in sequences:
+    if len(part) > 0:
+        result.append(part)
+
+print(uniques(result))
+
+end_time = time.time()
+print("Execution Time:", end_time - start_time, "seconds")
