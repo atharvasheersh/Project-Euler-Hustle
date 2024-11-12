@@ -1,0 +1,38 @@
+import math
+
+def factors(n):
+    factors = []
+    for i in range(1, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            factors.append(i)
+            if i != n // i:
+                factors.append(n // i)
+    return sorted(factors)
+
+def isPrime(n):
+    return factors(n) == [1, n]
+
+def prime_factors(n):
+    return [f for f in factors(n) if isPrime(f) and f != 1]
+
+def onlyPrimefactors(n):
+    prime_factors_n = prime_factors(n)
+    for f in factors(n):
+        if f != 1:
+            if not any(f % p == 0 for p in prime_factors_n):
+                return False
+    return True
+
+together_4 = []
+total = []
+cnt = 0 
+for i in range(100000, 200000):
+    if onlyPrimefactors(i) and len(prime_factors(i)) == 4:
+        total.append(i)
+
+for i in range(3, len(total)-1):
+    if total[i] - total[i-1] == 1 and total[i-1] - total[i-2] == 1 and total[i-2]-total[i-3] == 1 :
+        together_4 = [total[i], total[i-1], total[i-2], total[i-3]]
+        break
+
+print(together_4)
