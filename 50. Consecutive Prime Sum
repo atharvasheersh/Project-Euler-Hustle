@@ -1,0 +1,31 @@
+import math
+
+def isPrime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+primes = []
+for i in range(2, 3950):
+    if isPrime(i):
+        primes.append(i)
+
+max_prime = 0
+num_primes = len(primes)
+prime_sums = []
+for i in range(num_primes):
+    prime_sum = 0
+    for j in range(i, num_primes):
+        prime_sum += primes[j]
+        if isPrime(prime_sum):
+            prime_sums.append(prime_sum)
+        if prime_sum >= 1000000:
+            break
+result = []
+for part in prime_sums :
+    if part < 1000000:
+        result.append(part)
+print(sorted((result)))
