@@ -1,0 +1,28 @@
+import time
+
+def isPerm(n, k):
+    if len(str(n)) == len(str(k)):
+        return sorted(str(n)) == sorted(str(k))
+    return False
+
+def uniques(k):
+    return list(set(k))
+
+start_time = time.time()
+
+n1 = list(range(1, 1000000))
+ans = []
+
+for n in n1:
+    cnt = 0  
+    for j in range(2, 7):  
+        if isPerm(n, j * n):
+            cnt += 1
+    if cnt == 5: 
+        ans.append(n)
+
+result = uniques(ans)
+print(result)
+end_time = time.time()
+
+print(f"The time taken is {end_time -start_time} seconds ")
