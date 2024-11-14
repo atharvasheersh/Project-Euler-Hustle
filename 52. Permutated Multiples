@@ -1,4 +1,5 @@
 import time
+import math
 
 def isPerm(n, k):
     if len(str(n)) == len(str(k)):
@@ -25,4 +26,4 @@ result = uniques(ans)
 print(result)
 end_time = time.time()
 
-print(f"The time taken is {end_time -start_time} seconds ")
+print(f"The time taken is roughly {math.ceil(end_time -start_time)} seconds ")
