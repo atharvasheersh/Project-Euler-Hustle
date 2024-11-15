@@ -1,0 +1,28 @@
+def digits(n):
+    return [int(d) for d in str(n)]
+
+def factorial(n):
+    fact = [1]  # 0! = 1
+    for i in range(1, 10):
+        fact.append(fact[-1] * i)
+    return fact[n]
+
+factorial_memo = [factorial(i) for i in range(10)]
+
+def digit_factorial_sum(n):
+    return sum(factorial_memo[d] for d in digits(n))
+
+digit_factorials = []
+for i in range(1, 1000000):
+    chain = []
+    current = i
+    while current not in chain:
+        chain.append(current)
+        current = digit_factorial_sum(current)
+        if len(chain) > 62:  
+            break
+    if len(chain) == 60:
+        digit_factorials.append(i)
+
+print(digit_factorials)
+print(len(digit_factorials))
