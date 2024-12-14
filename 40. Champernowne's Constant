@@ -1,0 +1,14 @@
+l2 = [1, 10, 100, 1000, 10000, 100000, 1000000]
+
+result = 1
+k = 0
+num = 1
+
+for part in l2:
+    while k < part:
+        k += len(str(num))
+        if k >= part:
+            result *= int(str(num)[part - k + len(str(num)) - 1])
+        num += 1
+
+print(result)
