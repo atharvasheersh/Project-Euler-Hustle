@@ -1,0 +1,57 @@
+import math
+
+def factors(n):
+    factors = set()
+    for i in range(1, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            factors.add(i)
+            factors.add(n // i)
+    return factors
+
+def isPrime(n):
+    if n < 2:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+def isrelativelyprime(a, b):
+    return math.gcd(a, b) == 1
+
+def phi(n):
+    if n == 1:
+        return 1
+    result = n
+    p = 2
+    while p * p <= n:
+        if n % p == 0:
+            while n % p == 0:
+                n //= p
+            result -= result // p
+        p += 1
+    if n > 1: 
+        result -= result // n
+    return result
+
+nums = list(range(1, 1000000))
+actual = []
+for p in nums:
+    if not isPrime(p) and p%3 == 0 and p%2 == 0: 
+    #Read up about properties of Totient Maximum. Phi(p) where p is prime is always p-1. 
+    #Therefore it can't give a maximum p/phi(p)
+        actual.append(p)
+
+phis = []
+phis_r = []
+for i in actual:
+    phis.append(phi(i))
+    phis_r.append(i/phi(i))
+print(phis)
+print(phis_r)
+result = actual[(phis_r.index(max(phis_r)))]
+print(max(phis_r), result)
