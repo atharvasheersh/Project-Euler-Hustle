@@ -1,0 +1,16 @@
+def triangle(n):
+    return {n * (n + 1) // 2 for n in range(1, n)}
+
+def pentagonal(n):
+    return {n * (3 * n - 1) // 2 for n in range(1, n)}
+
+def hexagonal(n):
+    return {n * (2 * n - 1) for n in range(1, n)}
+
+n = 100000
+t = triangle(n)
+p = pentagonal(n)
+h = hexagonal(n)
+
+result = sorted(t & p & h)
+print(result[-1])
