@@ -1,0 +1,4 @@
+import math
+n = 20
+res = math.comb(2 * n, n)
+print(res)
